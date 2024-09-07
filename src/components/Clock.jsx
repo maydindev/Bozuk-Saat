@@ -7,12 +7,24 @@ export default function Clock(props) {
     return new Date()
   }
 
+  /*
   useEffect(() => {
     const intervalId = setInterval(() => {
       setTime(getTime)
       }, 1000)
       return () => clearInterval(intervalId)
   },[])
+  */
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const interval = setInterval(() => {
+        setTime(getTime)
+      }, 1000);
+  
+      return () => clearInterval(interval);
+    }
+  }, []);
 
   /* Challenge 
     
