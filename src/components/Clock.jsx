@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function Clock(props) {
   const [time, setTime] = useState(getTime)
@@ -6,6 +6,13 @@ export default function Clock(props) {
   function getTime() {
     return new Date()
   }
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setTime(getTime)
+      }, 1000)
+      return () => clearInterval(intervalId)
+  },[])
 
   /* Challenge 
     
