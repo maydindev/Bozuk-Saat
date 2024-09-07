@@ -25,6 +25,10 @@ export default function Clock(props) {
       return () => clearInterval(interval);
     }
   }, []);
+  //Vercel, sunucu taraflı render (SSR) yapan bir platformdur. Eğer kodunuzda setInterval doğrudan bileşen mount edilmeden çalışıyorsa, bu kod sunucu tarafında çalışıyor olabilir ve tarayıcıda beklenen gibi davranmayabilir. setInterval gibi tarayıcıya özgü fonksiyonları yalnızca istemci tarafında çalıştırmanız gerekir.
+  //Bu kod parçası, window nesnesinin mevcut olup olmadığını kontrol eder ve setInterval'ı yalnızca istemci tarafında başlatır.
+
+
 
   /* Challenge 
     
